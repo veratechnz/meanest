@@ -1,5 +1,4 @@
-pp 97
+pp 119
 
-Gulp for live relaod jslint and sass
 
-Understanding Route Definition
+Update the 3 remaining views files. Pull final chapter 4. 

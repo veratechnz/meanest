@@ -11,6 +11,6 @@ router.get('/location/review/new', ctrlLocations.addReview);
 
 
 /* GET home page. */
-router.get('/', ctrlOthers.about);
+router.get('/about', ctrlOthers.about);
 
 module.exports = router;
