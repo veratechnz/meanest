@@ -1,4 +1,6 @@
-pp 119
+pp 129
 
+Installed mongoose and mongo db.
 
-Update the 3 remaining views files. Pull final chapter 4. 
+Just finished DB connection info and event listeners. Also graceful shutdown. 
+Need testing and may need windows upgrade for mongo db signal/event listeners. 
