@@ -1,6 +1,4 @@
-pp 129
+pp 152 all is well.
 
-Installed mongoose and mongo db.
+Using Robo Mongo. 
 
-Just finished DB connection info and event listeners. Also graceful shutdown. 
-Need testing and may need windows upgrade for mongo db signal/event listeners. 

@@ -7381,3 +7381,7 @@ legend {
 .affix {
   position: fixed;
 }
+
+.label-warning {
+  margin-right: 4px;
+}
