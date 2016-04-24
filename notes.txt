@@ -1,4 +1,13 @@
-pp 152 all is well.
+pp 158 all is well.
+
+MLAB was having some issues. 
 
 Using Robo Mongo. 
 
+My DB URI Connection String:
+mongodb://<dbuser>:<dbpassword>@ds019101.mlab.com:19101/loc8ter
+mongodb://user:loc8ter88@ds019101.mlab.com:19101/loc8ter
+
+
+
+mongo ds019101.mlab.com:19101/loc8ter -u user -p loc8ter88
