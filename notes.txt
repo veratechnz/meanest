@@ -1,5 +1,6 @@
-pp 169 all is well. 
+Finished up to pp172
 
+Need to start nodemon. may need to review start up procedures / mongo also....
 
 
 
