@@ -1,12 +1,4 @@
-Finished up to pp172
+Using Angular nw. // Updated from github.
+Angular call on line 27 may need attention. 
 
-Need to start nodemon. may need to review start up procedures / mongo also....
-
-
-
-
-My DB URI Connection String:
-mongodb://<dbuser>:<dbpassword>@ds019101.mlab.com:19101/loc8ter
-mongodb://user:loc8ter88@ds019101.mlab.com:19101/loc8ter
-
-mongo ds019101.mlab.com:19101/loc8ter -u user -p loc8ter88
+pp254.
