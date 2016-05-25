@@ -1,4 +1,7 @@
 Using Angular nw. // Updated from github.
-Angular call on line 27 may need attention. 
+Just finished Angular custom Filter
 
-pp254.
+Currently starting the app with nodemon. 
+
+
+pp257.
