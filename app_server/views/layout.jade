@@ -9,6 +9,8 @@ html(ng-app='loc8rApp')
    .navbar.navbar-default.navbar-fixed-top
       .container
         .navbar-header
+
+
           a.navbar-brand(href='/') Loc8r
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
             span.icon-bar
@@ -20,15 +22,25 @@ html(ng-app='loc8rApp')
               a(href='/about/') About
 
     .container
-      block content
+      div(ng-view)
+        block content
 
       footer
         .row
           .col-xs-12
             small &copy; Simon Holmes 2014
 
-      script(src='/javascripts/angular.min.js')
-      script(src='/javascripts/loc8terApp.js')
       script(src='/javascripts/jquery-1.11.1.min.js')
       script(src='/bootstrap/js/bootstrap.min.js')
       script(src='/javascripts/validation.js')
+      script(src='/javascripts/angular.min.js')
+      script(src='/javascripts/angular-route.min.js')
+      script(src='/javascripts/app.js')
+      script(src='/javascripts/loc8r.min.js')
+      script(src='/home/home-controller.js')
+      // script(src='/common/geoLocation-service.js')
+      // script(src='/common/loc8terData-service.js')
+      // script(src='/common/directive/ratingStars/ratingStars-directive.js')
+      // script(src='/common/formatDistance-filter.js')
+
+

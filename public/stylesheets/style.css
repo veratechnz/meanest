@@ -3,3 +3,11 @@
 .review-header {margin-bottom: 10px;}
 .reviewAuthor {margin: 0 5px;}
 .reviewTimestamp {color: #ccc;}
+
+#filter {margin-left: 4px; margin-bottom: 2%;}
+
+a.ng-binding {margin-right: 12px;}
+
+.list-group-item {margin-top: 1%;}
+
+.label-warning {margin-right: 1%;}

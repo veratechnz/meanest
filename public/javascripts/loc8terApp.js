@@ -36,25 +36,80 @@ var ratingStars = function () {
 	};
 };
 
+var loc8rData = function ($http) {
+	var locationByCoords = function (lat, lng) {
+		return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20000');
+	};
+	return {
+		locationByCoords : locationByCoords
+	};
+};
+
+var geolocation = function () {
+	var getPosition = function (cbSuccess, cbError, cbNoGeo) {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(cbSuccess, cbError);
+		} else {
+			cbNoGeo();
+		}
+	};
+	return {
+		//This returns the get position function so it can be invoked from a controller.
+		getPosition : getPosition
+	};
+};
+
+//Setting up the app
 var myApp = angular.module('loc8rApp',[]);
 
-myApp.controller('locationListCtrl', function($scope) {
-		$scope.data = {
-		locations: [{
-		name: 'Burger Queen',
-		address: '125 High Street, Reading, RG6 1PS',
-		rating: 1,
-		facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-		distance: '0.296456',
-		_id: '5370a35f2536f6785f8dfb6a'
-	},{
-		name: 'Costy',
-		address: '125 High Street, Reading, RG6 1PS',
-		rating: 5,
-		facilities: ['Hot drinks', 'Food', 'Alcoholic drinks'],
-		distance: '0.7865456',
-		_id: '5370a35f2536f6785f8dfb6a'
-	}]};
-});
+//The controller 
+myApp.controller('locationListCtrl', function($scope, loc8rData, geolocation) {
 
-myApp.filter('formatDistance', formatDistance).directive('ratingStars', ratingStars);
+	$scope.message = 'Checking your location';
+	
+	$scope.getData = function (position) {
+		var lat = position.coords.latitude,
+			lng = position.coords.longitude;
+		$scope.message = 'Searching for nearby places';
+			loc8rData.locationByCoords(lat, lng)
+				.success(function(data){
+					$scope.message = data.length > 0 ? '' : 'No locations found';
+					$scope.data = { locations: data };
+				})
+				.error(function (e) {
+					$scope.message = 'Sorry, something has gone wrong';
+				});
+	};
+
+	$scope.showError = function (error) {
+		$scope.$apply(function() {
+			$scope.message = error.message;
+		});
+	};
+
+	$scope.noGeo = function () {
+		$scope.apply(function() {
+			$scope.message = 'Geolocation is not supported by this browser.';
+		});
+	};
+
+	geolocation.getPosition($scope.getData, $scope.showError, $scope.noGeo);
+
+}); //Controller ends
+
+
+
+
+//Our custom filter
+myApp.filter('formatDistance', formatDistance);
+
+//Our custom directive
+myApp.directive('ratingStars', ratingStars);
+
+//Our custom service
+myApp.service('loc8rData', loc8rData);
+
+//Our Geolocation service
+myApp.service('geolocation', geolocation);
+
+

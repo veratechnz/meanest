@@ -4,4 +4,9 @@ Just finished Angular custom Filter
 Currently starting the app with nodemon. 
 
 
-pp257.
+pp300 
+
+All is well. Uglify js
+
+
+Needs testing. 
