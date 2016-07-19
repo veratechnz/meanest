@@ -3,8 +3,7 @@ Just finished Angular custom Filter
 
 Currently starting the app with nodemon. 
 
-
-pp300 
+pp317 10.2.2
 
 All is well. Uglify js
 

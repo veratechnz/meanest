@@ -8,7 +8,8 @@ require('./app_api/models/db');
 var uglifyJs = require('uglify-js');
 var fs = require('fs');
 
-var routes = require('./app_server/routes/index');
+// var routes = require('./app_server/routes/index');
+
 var routesApi = require('./app_api/routes/index');
 // var users = require('./app_server/routes/users');
 
@@ -18,11 +19,16 @@ var app = express();
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'jade');
 var appClientFiles = [
+ 'app_client/app.js',
  'app_client/home/home-controller.js',
+ 'app_client/about/about-controller.js',
  'app_client/common/geolocation-service.js',
  'app_client/common/loc8terData-service.js',
  'app_client/common/formatDistance-filter.js',
- 'app_client/common/directive/ratingStars/ratingStars-directive.js'
+ 'app_client/common/directive/ratingStars/ratingStars-directive.js',
+ 'app_client/common/directive/footerGeneric/footerGeneric-directive.js',
+ 'app_client/common/directive/navigation/navigation-directive.js',
+ 'app_client/common/directive/pageHeader/pageHeader-directive.js'
 ];
 var uglified = uglifyJs.minify(appClientFiles, {compress : false });
 fs.writeFile('public/javascripts/loc8r.min.js', uglified.code, function (err){
@@ -33,6 +39,9 @@ fs.writeFile('public/javascripts/loc8r.min.js', uglified.code, function (err){
     }
 });
 
+
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -42,7 +51,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', routes);
+// app.use('/', routes);
 app.use('/api', routesApi);
 // app.use('/users', users);
 
@@ -77,5 +86,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
+app.use(function(req, res){
+    res.sendfile(path.join(_dirname, 'app_client', 'index.html'));
+});
 
 module.exports = app;
